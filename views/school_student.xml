@@ -1,0 +1,51 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="school_student_tree_view">
+      <field name="name">school.student.tree.view</field>
+      <field name="model">school.student</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="birth_date"/>
+          <field name="age"/>
+          <field name="final_exam_grade"/>
+          <field name="subject_ids" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="school_student_form_view">
+      <field name="name">school.student.form.view</field>
+      <field name="model">school.student</field>
+      <field name="arch" type="xml">
+        <form>
+        <group>
+         <field name="name"/>
+          <field name="birth_date"/>
+          <field name="age"/>
+          <field name="final_exam_grade"/>
+          <field name="subject_ids"/>
+        </group> 
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="school_student_action_view">
+      <field name="name"> Estudiantes</field>
+      <field name="res_model">school.student</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <!-- menu categories -->
+
+    <menuitem name="Estudiantes" id="develoger.menu_2" parent="develoger.menu_root" action="school_student_action_view"
+    sequence = "2"/>
+
+    </data>
+</odoo>

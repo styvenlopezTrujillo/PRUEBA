@@ -1,0 +1,55 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="school_subject_tree_view">
+      <field name="name">school.subject.tree.view</field>
+      <field name="model">school.subject</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="credits"/>
+          <field name="max_students"/>
+          <field name="active"/>
+          <field name="student_ids" widget="many2many_tags"/>
+          <field name="teacher_id"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="school_subject_form_view">
+      <field name="name">school.subject.form.view</field>
+      <field name="model">school.subject</field>
+      <field name="arch" type="xml">
+        <form>
+        <group>
+          <field name="name"/>
+          <field name="credits"/>
+          <field name="max_students"/>
+          <field name="active"/>
+          <field name="student_ids"/>
+          <field name="teacher_id"/>
+        </group> 
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="school_subject_action_view">
+      <field name="name"> Cursos</field>
+      <field name="res_model">school.subject</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="DEVELOGER" id="develoger.menu_root" groups="group_develoger"/>
+
+    <!-- menu categories -->
+
+    <menuitem name="Cursos" id="develoger.menu_1" parent="develoger.menu_root" action="school_subject_action_view"
+    sequence = "1"
+    /> 
+  </data>
+</odoo>

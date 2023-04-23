@@ -1,0 +1,47 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+    <record model="ir.ui.view" id="school_teacher_tree_view">
+      <field name="name">school.teacher.tree.view</field>
+      <field name="model">school.teacher</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="profile"/>
+          <field name="subject_ids" widget="many2many_tags"/>
+        </tree>
+      </field>
+    </record>
+    <record model="ir.ui.view" id="school_teacher_form_view">
+      <field name="name">school.teacher.form.view</field>
+      <field name="model">school.teacher</field>
+      <field name="arch" type="xml">
+        <form>
+        <group>
+          <field name="name"/>
+          <field name="profile"/>
+          <field name="subject_ids"/>
+        </group> 
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+
+    <record model="ir.actions.act_window" id="school_teacher_action_view">
+      <field name="name"> Profesor</field>
+      <field name="res_model">school.teacher</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- Top menu item -->
+
+    <!-- menu categories -->
+
+    <menuitem name="Profesor" id="develoger.menu_3" parent="develoger.menu_root" action="school_teacher_action_view"
+    sequence = "3"/>
+
+    </data>
+</odoo>
